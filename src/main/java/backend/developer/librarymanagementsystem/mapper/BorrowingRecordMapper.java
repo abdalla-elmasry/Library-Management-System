@@ -9,8 +9,10 @@ import java.time.LocalDate;
 @Component
 public class BorrowingRecordMapper {
 
-    public BorrowingRecord mapToEntity() {
+    public BorrowingRecord mapToEntity(long bookId,long patronId) {
         return BorrowingRecord.builder()
+                .bookId(bookId)
+                .patronId(patronId)
                 .borrowDate(LocalDate.now())
                 .returnDate(null)
                 .build();

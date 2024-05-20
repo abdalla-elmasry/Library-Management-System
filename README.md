@@ -18,7 +18,7 @@ For building and running the application you need:
 1. Install PostgreSQL on your machine. You can download it from the official
    website [here](https://www.postgresql.org/download/).
 2. Once you have installed PostgreSQL, you can create a new database by using the command prompt. First, log in to the
-   PostgreSQL database server using pgAdmin or the command prompt. Then, enter the command "CREATE DATABASE todo_list;"
+   PostgreSQL database server using pgAdmin or the command prompt. Then, enter the command "CREATE DATABASE library-management-system;"
    to create a new database¹.
 3. You can also create a database using pgAdmin, a GUI-based tool. To create a database using pgAdmin, right-click on
    the server name and select Create > Database...¹.
@@ -28,7 +28,7 @@ For building and running the application you need:
 ### Running the application locally
 
 There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method
-in the `com.example.todolist.TodoListApplication` class from your IDE.
+in the `backend/developer/librarymanagementsystem` class from your IDE.
 
 Alternatively you can use
 the [Spring Boot Maven plugin](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html)

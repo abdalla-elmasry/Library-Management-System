@@ -22,7 +22,7 @@ public class ContactInformation {
     private String email;
 
     @NotNull(message = "The address is required.")
-    @Size(min = 2, max = 30, message = "The address must be between 2 and 30 characters.")
+    @Size(min = 2, max = 50, message = "The address must be between 2 and 30 characters.")
     @Column(nullable = false)
     private String address;
 

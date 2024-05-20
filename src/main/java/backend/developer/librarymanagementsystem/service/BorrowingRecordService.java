@@ -23,7 +23,7 @@ public class BorrowingRecordService {
     public BorrowingRecordResponseDTO allowPatronToBorrowBook(long bookId, long patronId) {
         validateRecordBookIdNonExistence(bookId);
 
-        BorrowingRecord borrowingRecord = mapper.mapToEntity();
+        BorrowingRecord borrowingRecord = mapper.mapToEntity(bookId, patronId);
         BorrowingRecord saved = repository.save(borrowingRecord);
         return mapper.mapToDTO(saved);
     }
