@@ -32,6 +32,7 @@ public class PatronService {
         Patron saved = repository.save(patron);
         return mapper.mapToDTO(saved);
     }
+
     @Cacheable("patron")
     @Transactional(readOnly = true)
     public PatronResponseDTO findPatronById(long id) {
@@ -67,7 +68,7 @@ public class PatronService {
     private Patron validatePatronExistence(long id) {
         return repository.findById(id)
                 .orElseThrow(() ->
-                        new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("The patron with Id:[%s] does not exist.",id)));
+                        new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("The patron with Id:[%s] does not exist.", id)));
     }
 
     private void validatePatronNameNonExistence(PatronRequestDTO request) {
@@ -77,10 +78,10 @@ public class PatronService {
     }
 
     private void validatePatronContactInformationNonExistence(PatronRequestDTO request) {
-        if (repository.existsByContactInformation(request.getContactInformation().getEmail())) {
+        if (repository.existsByContactInformationEmail(request.getContactInformation().getEmail())) {
             throw new AlreadyExistsException(String.format("The patron with email: [%s] already exists.", request.getContactInformation().getEmail()));
         }
-        if (repository.existsByContactInformation(request.getContactInformation().getPhoneNumber())) {
+        if (repository.existsByContactInformationPhoneNumber(request.getContactInformation().getPhoneNumber())) {
             throw new AlreadyExistsException(String.format("The patron with phone number: [%s] already exists.", request.getContactInformation().getPhoneNumber()));
         }
     }

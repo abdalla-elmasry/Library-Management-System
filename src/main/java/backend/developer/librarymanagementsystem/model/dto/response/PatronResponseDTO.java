@@ -11,6 +11,5 @@ import lombok.ToString;
 public class PatronResponseDTO {
     private long patronId;
     private String name;
-    private String lastName;
     private ContactInformation contactInformation;
 }

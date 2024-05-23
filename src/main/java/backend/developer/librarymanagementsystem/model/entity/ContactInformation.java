@@ -13,12 +13,12 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Embeddable
+
 public class ContactInformation {
-    @NotNull(message = "The title is required.")
+    @NotNull(message = "The email is required.")
     @Email(message = "Invalid email.")
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @NotNull(message = "The address is required.")
@@ -26,7 +26,9 @@ public class ContactInformation {
     @Column(nullable = false)
     private String address;
 
-    @Pattern(regexp = "^\\+?[0-9. ()-]{7,25}$",message = "Invalid phone number format.")
-    @Column(nullable = false,unique = true)
+    @NotNull(message = "The phone number is required.")
+    @Size(min = 7, max = 25, message = "Phone number must be between 7 and 25 characters")
+    @Pattern(regexp = "^\\+20 \\(1[0-9]{2}\\) \\d{3}-\\d{4}$", message = "Invalid phone number format. \nMake sure it follows this format +20 (1XX) XXX-XXXX")
+    @Column(nullable = false, unique = true)
     private String phoneNumber;
 }

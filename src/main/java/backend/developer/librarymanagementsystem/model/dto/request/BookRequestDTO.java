@@ -9,6 +9,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class BookRequestDTO {
+
     @NotNull(message = "The title is required.")
     @Size(min = 2, max = 30, message = "The title must be between 2 and 30 characters.")
     private String title;
@@ -18,7 +19,6 @@ public class BookRequestDTO {
     private String author;
 
     @NotNull(message = "The publication year is required.")
-    @Digits(integer = 4, fraction = 0, message = "The publication year must have exactly 4 digits.")
     @Min(value = 1000, message = "The publication year can not be lower than 1000.")
     @Max(value = 2024, message = "The publication year can not be in the future.")
     private int publicationYear;

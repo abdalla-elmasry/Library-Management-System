@@ -38,7 +38,7 @@ public class PatronController {
 
     @PutMapping(path = "/patrons/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updatePatron(@PathVariable long id,@Valid @RequestBody PatronRequestDTO request) {
+    public void updatePatron(@PathVariable long id, @Valid @RequestBody PatronRequestDTO request) {
         service.updatePatronById(id, request);
     }
 

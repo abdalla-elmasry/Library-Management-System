@@ -11,16 +11,18 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class ApiExceptionHandler {
-        @ExceptionHandler(NotFoundException.class)
+    @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<Map<String, String>> handleBookNotFoundException(NotFoundException ex) {
         Map<String, String> message = Map.of("error", ex.getMessage());
         return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
     }
+
     @ExceptionHandler(AlreadyExistsException.class)
     public ResponseEntity<Map<String, String>> handleBookAlreadyExistsException(AlreadyExistsException ex) {
         Map<String, String> message = Map.of("error", ex.getMessage());
         return new ResponseEntity<>(message, HttpStatus.CONFLICT);
     }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
         Map<String, String> errors = Map.of("error", ex.getMessage());

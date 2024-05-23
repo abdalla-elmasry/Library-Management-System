@@ -10,8 +10,10 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+
 public class PatronRequestDTO {
-    @NotNull(message = "The title is required.")
+
+    @NotNull(message = "The name is required.")
     @Size(min = 2, max = 30, message = "The title must be between 2 and 30 characters.")
     private String name;
 

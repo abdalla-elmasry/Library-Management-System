@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,7 +41,7 @@ public class BookService {
 
     @Cacheable("books")
     @Transactional(readOnly = true)
-    public Page<Book> findAllBooks(@PageableDefault(size = 10) Pageable pageable) {
+    public Page<Book> findAllBooks(Pageable pageable) {
         return repository.findAll(pageable);
     }
 
@@ -74,11 +73,13 @@ public class BookService {
                 .orElseThrow(() ->
                         new NotFoundException(String.format("The book with ID: [%s] does not exist.", id)));
     }
+
     private void validateBookIsbnNonExistence(BookRequestDTO request) {
         if (repository.existsByISBN(request.getISBN())) {
             throw new AlreadyExistsException(String.format("The book with ISBN: [%s] already exists.", request.getISBN()));
         }
     }
+
     private void validateBookTitleNonExistence(BookRequestDTO request) {
         if (repository.existsByTitle(request.getTitle())) {
             throw new AlreadyExistsException(String.format("The book with title: [%s] already exists.", request.getTitle()));

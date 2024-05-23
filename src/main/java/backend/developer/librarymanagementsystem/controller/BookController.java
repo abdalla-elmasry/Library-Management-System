@@ -30,6 +30,7 @@ public class BookController {
     public BookResponseDTO findBookById(@PathVariable long id) {
         return service.findBookById(id);
     }
+
     @GetMapping(path = "/books")
     public Page<Book> findAllBooks(Pageable pageable) {
         return service.findAllBooks(pageable);

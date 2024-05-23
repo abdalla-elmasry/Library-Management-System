@@ -1,6 +1,7 @@
 package backend.developer.librarymanagementsystem.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.*;
 
 import java.util.List;
@@ -24,8 +25,9 @@ public class Patron {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false)
     @Embedded
+    @Valid
     private ContactInformation contactInformation;
 
     @OneToMany(mappedBy = "patronId")

@@ -37,7 +37,7 @@ public class PatronServiceTest {
     private PatronMapper mapper;
 
     @Test
-    public void createPatron() {
+    public void testCreatePatron() {
         // Prepare test data
         PatronRequestDTO request = new PatronRequestDTO(); // there is a reason why we call the non-arg constructor,,because if we called the arg before non-arg you wont be able to set any updates in the non-arg attributes
         request.setName("Name");
